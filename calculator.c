@@ -171,7 +171,6 @@ int main()
 
     int l = strlen(str), k = 0;
 
-    // Filter whitespaces and validate characters
     for (int i = 0; i < l; i++)
     {
         if (isoperand(str[i]) || str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/' || str[i] == ' ')
