@@ -19,8 +19,10 @@ Below is a table listing the branches in this repository, along with their corre
 
 | Branch Name         | Problem Statement                                                                                 |
 |---------------------|--------------------------------------------------------------------------------------------------|
-| **assignment-1**    | Write a program to create a simple user management system with options for adding, updating, and deleting user data. |
-| **assignment-2**    | Develop a file-handling program that supports reading, updating, and appending user data in both text and binary formats. |
+| **assignment-1**    | Design a console-based calculator program in C that accepts mathematical
+expressions as input in the form of strings. |
+| **assignment-2**    | Write a program where user records are stored as a list of users with fields such as unique
+ID, Name, and Age. The file is named users.txt.|
 
 ---
 
