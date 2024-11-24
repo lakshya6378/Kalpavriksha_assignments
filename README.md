@@ -19,10 +19,8 @@ Below is a table listing the branches in this repository, along with their corre
 
 | Branch Name         | Problem Statement                                                                                 |
 |---------------------|--------------------------------------------------------------------------------------------------|
-| **assignment-1**    | Design a console-based calculator program in C that accepts mathematical
-expressions as input in the form of strings. |
-| **assignment-2**    | Write a program where user records are stored as a list of users with fields such as unique
-ID, Name, and Age. The file is named users.txt.|
+| **assignment-1**    | Design a console-based calculator program in C that accepts mathematical expressions as input in the form of strings. |
+| **assignment-2**    | Write a program where user records are stored as a list of users with fields such as unique ID, Name, and Age. The file is named users.txt.|
 
 ---
 
