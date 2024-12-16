@@ -12,7 +12,11 @@ struct stack
 void push(struct stack *stk, long ch)
 {
     if (stk->top == stk->size - 1)
+    {
+        printf("memory failure please try again.");
         return;
+    }
+        
     stk->top++;
     stk->st[stk->top] = ch;
 }
@@ -46,6 +50,11 @@ int priority(char c)
 int isoperand(char c)
 {
     return c >= '0' && c <= '9';
+}
+
+int isoperator(char c)
+{
+    return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
 char *postfixconversion(char str2[])
@@ -173,10 +182,24 @@ int main()
 
     for (int i = 0; i < l; i++)
     {
-        if (isoperand(str[i]) || str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/' || str[i] == ' ')
+        if (!isoperand(str[i]) && !isoperator(str[i]) && str[i] != ' ')
         {
-            str2[k++] = str[i];
+            printf("Error: Invalid expression.");
+            exit(0);
         }
+        else if (isoperator(str[i]))
+        {
+            if ((i + 1 < l && isoperator(str[i + 1])) ||
+                (i + 2 < l && str[i + 1] == ' ' && isoperator(str[i + 2])))
+            {
+                printf("Error: Invalid expression. ");
+                exit(0);
+            }
+        }
+        {
+            str2[k++]=str[i];
+        }
+        
     }
 
     str2[k] = '\0';
