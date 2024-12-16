@@ -17,7 +17,7 @@ void CreateUser(struct user *u)
         printf("Unable to open the file. Please try again");
         return;
     }
-    fprintf(fp,"%s %s %d\n",u->uniqueid,u->name,u->age);
+    fprintf(fp,"%s|%s|%d\n",u->uniqueid,u->name,u->age);
     printf("user inserted successfully");
     fclose(fp);
 }
@@ -33,7 +33,7 @@ void readUser()
         return;
     }
     int i=1;
-    while(fscanf(fp,"%s %s %d",u.uniqueid,u.name,&u.age)!=EOF)
+    while (fscanf(fp, "%[^|]|%[^|]|%d\n", u.uniqueid, u.name, &u.age) != EOF)
     {
         printf("user %d:\n",i++);
         printf("User's UniqueId:  %s\n",u.uniqueid);
@@ -57,8 +57,7 @@ void updateUser(char *changableUser)
         return;
     }
 
-    
-    while (fscanf(fp, "%s %s %d", u.uniqueid, u.name, &u.age) != EOF)
+        while (fscanf(fp, "%[^|]|%[^|]|%d\n", u.uniqueid, u.name, &u.age) != EOF)
     {
         if (strcmp(u.uniqueid, changableUser) == 0)
         {
@@ -107,14 +106,14 @@ void deleteuser(char *deluser)
         printf("Unable to open the file. Please try again.\n");
         return;
     }
-    while (fscanf(fp, "%s %s %d", u.uniqueid, u.name, &u.age) != EOF)
+    while (fscanf(fp, "%[^|]|%[^|]|%d\n", u.uniqueid, u.name, &u.age) != EOF)
     {
         if (strcmp(u.uniqueid, deluser) == 0)
         {
             found = 1;
             continue;
         }
-        fprintf(temp, "%s %s %d\n", u.uniqueid, u.name, u.age);
+        fprintf(temp, "%s|%s|%d\n", u.uniqueid, u.name, u.age);
     }
 
     fclose(fp);
