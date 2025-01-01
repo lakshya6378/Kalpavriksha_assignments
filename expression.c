@@ -3,11 +3,6 @@
 #include<limits.h>
 int calculate_ans(int B,int N,int M)
 {
-    if(M==0)
-    {
-        printf("error:Modulus cant be zero");
-        return 0;
-    }
     if(N==0)
     return 1;
     if(N==1)
@@ -25,8 +20,21 @@ int main()
     scanf("%d",&B);
     printf("enter the exponent number");
     scanf("%d",&N);
+    while (N < 0)
+    {
+        printf("error:exponent can't be negative.please reenter Modulus number");
+        scanf("%d", &N);
+    }
+
     printf("enter the modulus number");
     scanf("%d",&M);
+    while (M <= 0)
+    {
+        printf("error:modulus can't be negative or zero.please reenter Modulus number");
+        scanf("%d", &M);
+    }
+
+   
     ans=calculate_ans(B,N,M);
     printf("%d",ans);
     
