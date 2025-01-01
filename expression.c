@@ -36,7 +36,10 @@ int main()
 
    
     ans=calculate_ans(B,N,M);
+    if(ans<0)
+    ans+=M;
     printf("%d",ans);
+    
     
     return 0;
 }
