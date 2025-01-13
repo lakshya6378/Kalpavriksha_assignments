@@ -57,11 +57,11 @@ int main()
     ans=checkanagram(str1,strlength1,str2,strlength2);
     if(ans==0)
    {
-    printf("given strings are not anagrams of each other");
+    printf("false");
    }
    else
    {
-    printf("given strings are anagrams of each other");
+    printf("true");
    }
     
 }
