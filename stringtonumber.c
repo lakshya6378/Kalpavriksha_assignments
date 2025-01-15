@@ -28,7 +28,6 @@ int customstoi(char *str,int strlength)
     int sign=1;
     if(((strlength>1)&&(str[0]=='-')&&(!(str[1]>='0'&&str[1]<='9')))||(!(str[0]>='0'&&str[0]<='9')&&(str[0]!='-'))||(strlength==1&&(str[0]=='-')))
     {
-        printf("error :invalid argument");
         return 0;
     }
 
