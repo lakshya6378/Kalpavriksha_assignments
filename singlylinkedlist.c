@@ -7,23 +7,27 @@ typedef struct SinglyListNode
 } node;
  node *head=NULL;
  int success_flag=1;
+ node *createNode(int val)
+ {
+    node *newNode=(node *)malloc(sizeof(node));
+        newNode->val=val;
+        newNode->next=NULL;
+        return newNode;
+ }
  void insertAtBeginning(int value)
  {
     if(head==NULL)
     {
-        head=(node *)malloc(sizeof(node));
-        head->val=value;
-        head->next=NULL;
+        head=createNode(value);
         return;
     }
-    node *tempNode=(node *)malloc(sizeof(node));
+    node *tempNode=createNode(value);
     if(tempNode==NULL)
     {
         printf("error:memory allocation failed");
         success_flag=0;
         return;
     }
-    tempNode->val=value;
     tempNode->next=head;
     head=tempNode;
  }
@@ -32,9 +36,7 @@ typedef struct SinglyListNode
  {
     if(head==NULL)
     {
-        head=(node *)malloc(sizeof(node));
-        head->val=value;
-        head->next=NULL;
+        head=createNode(value);
         return;
     }
     node *iterator=head;
@@ -42,15 +44,13 @@ typedef struct SinglyListNode
     {
         iterator=iterator->next;
     }
-    iterator->next=(node *)malloc(sizeof(node));
+    iterator->next=createNode(value);
     if(iterator->next==NULL)
     {
         printf("error: memory allocation failed");
         success_flag=0;
         return;
     }
-    iterator->next->val=value;
-    iterator->next->next=NULL;
  }
 
  void inserrtAtPosition(int position,int value)
@@ -79,9 +79,7 @@ typedef struct SinglyListNode
         success_flag=0;
         return;
     }
-    node *temp=(node *)malloc(sizeof(node));
-    temp->val=value;
-    temp->next=NULL;
+    node *temp=createNode(value);
     temp->next=iterator->next;
     iterator->next=temp;
  }
@@ -96,7 +94,7 @@ typedef struct SinglyListNode
     }
     while(iterator!=NULL)
     {
-        printf("%d",iterator->val);
+        printf("%d ",iterator->val);
         iterator=iterator->next;
     }
  }
