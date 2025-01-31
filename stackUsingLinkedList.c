@@ -107,7 +107,7 @@ sta.head=NULL;
                   value=isEmpty();
                   if(value==1)
                   {
-                    printf("stack is empty");
+                    printf("stack is empty ,underflow");
                   }
                   else 
                   {
