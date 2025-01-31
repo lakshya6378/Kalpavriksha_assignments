@@ -56,6 +56,7 @@ int priority(char str[10])
     return 2;
     if(strcmp(str,"Stable")==0)
     return 1; 
+    return 0;
 }
 
 void sortList(node *head)
@@ -85,8 +86,11 @@ int main()
     node *head=NULL;
     node *tail=NULL;
     patient pa;
+    int *PatientIds=(int *)malloc(sizeof(int)*2);
+    int count=0;
+    int size=2;
     scanf("%d",&n);
-    while(n<=0)
+    while(n<0)
     {
         printf("number of patient cant be negative or zero, please reenter the number of patient\n");
         scanf("%d",&n);
@@ -96,6 +100,41 @@ int main()
         scanf("%d",&pa.patient_id);
         getchar();
         scanf("%s",pa.severity);
+        int pat=0;
+        int flag=0;
+        for(pat=0;pat<count;pat++)
+        {
+            if(PatientIds[pat]==pa.patient_id)
+            {
+                printf("patient id cant be same for two patients. please reenter patient id\n");
+                paNum--;
+                flag=1;
+                break;
+                
+
+            }
+        }
+        if(flag==1)
+        continue;
+
+         if(!priority(pa.severity))
+        {
+            printf("severity can have values Critical or Serious or Stable.please reenter patient details\n");
+            paNum--;
+            continue;
+        }
+
+        if(pat==count)
+        {
+            if(count<size)
+            {
+                size=size*2;
+                PatientIds=(int *)realloc(PatientIds,sizeof(int)*size);
+            }
+             PatientIds[count]=pa.patient_id;
+             count++;
+        }
+       
         head=insertAtEnd(head,pa,&tail);
     }  
     sortList(head);
