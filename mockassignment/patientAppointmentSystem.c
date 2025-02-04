@@ -80,21 +80,52 @@ void sortList(node *head)
     }
    }
 }
+
+int isValid(char *num)
+{
+    int len=strlen(num);
+    for(int i=0;i<len;i++)
+    {
+        if(num[i]<'0'||num[i]>'9')
+        return 0;
+    }
+    return 1;
+}
+
+int stoI(char *num)
+{
+int len=strlen(num);
+int n=0;
+    for(int  index=0;index<len;index++)
+    {
+        n=n*10+num[index]-'0';
+    }
+    return n;
+}
 int main()
 {
-    int n;
+    char num[100];
     node *head=NULL;
     node *tail=NULL;
     patient pa;
     int *PatientIds=(int *)malloc(sizeof(int)*2);
     int count=0;
     int size=2;
-    scanf("%d",&n);
-    while(n<0)
+    int valid=0;
+
+    printf("enter the number of patients.\n");
+    scanf("%[^\n]s",num);
+    valid=isValid(num);
+   
+    while(!valid)
     {
-        printf("number of patient cant be negative or zero, please reenter the number of patient\n");
-        scanf("%d",&n);
+        printf("please enter some valid number of patients\n");
+        getchar();
+         scanf("%[^\n]s",num);
+         valid=isValid(num);
     }
+    int n=stoI(num);
+    
     for(int paNum=0;paNum<n;paNum++)
     {
         scanf("%d",&pa.patient_id);
